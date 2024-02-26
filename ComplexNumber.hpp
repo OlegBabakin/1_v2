@@ -9,12 +9,22 @@
 #ifndef __H_COMPLEX  // recompilation protection
 #define __H_COMPLEX
 #define N 100000 // Number for random number generator
+#define M 100000
 
 #include <iostream>
 #include <ostream>
 #include <time.h>
 #include <math.h>
 #include <vector>
+#include <stdio.h>
+#include <stdlib.h>
+#include <fstream>
+#include <string>
+#include <sstream>
+#include <iterator>
+#include <cstring>
+
+#define eps 1e-20
 
 class Complex_vec;
 
