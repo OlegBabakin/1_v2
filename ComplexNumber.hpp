@@ -16,12 +16,12 @@
 #include <math.h>
 #include <vector>
 
-class CComplexVector;
+class Complex_vec;
 
 // Complex number class
 class Complex_num
 {
-friend class CComplexVector;
+friend class Complex_vec;
 private:
 public:
         double Re_;

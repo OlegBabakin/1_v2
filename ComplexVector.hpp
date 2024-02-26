@@ -22,8 +22,10 @@ class Complex_vec
 class Complex_vec_0 : public Complex_vec
 {
     public:
+    Complex_vec_0();
+    Complex_vec_0(const std::vector<Complex_num> &other);
     int output(const char *file_name);
-    friend Complex_vec_0 operator+(const Complex_vec &cvec1, const Complex_vec &cvec2);
+    friend Complex_vec_0 operator+(Complex_vec &cvec1, Complex_vec &cvec2);
      
 };
 Complex_vec_0 operator+(const Complex_vec &cvec1, const Complex_vec &cvec2);
