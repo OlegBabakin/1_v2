@@ -25,41 +25,40 @@ int Complex_vec::Input(const char *name, std::vector<Complex_vec *> &v)
         std::string str;
         while (getline(f, str))
         {
-                std::stringstream ss(str); std::istream_iterator<std::string> it;
+                std::stringstream ss(str); 
+                std::istream_iterator<std::string> it;
+                std::istream_iterator<std::string> it_min1;
                 it = ss;
+                it_min1 = it;
                 if (it != std::istream_iterator<std::string>())
                 {
+                        if (fabs(std::stod(*it) - 0) < eps)
+                        {
+                            Complex_vec_0 *w = new Complex_vec_0;
+                            ++it;
+                            for (; it_min1 != std::istream_iterator<std::string>(); ++it)
+                            {
+                                double tmp = std::stod(*it);
+                                it_min1 = it;
+                                ++it;
+                                Complex_num num(std::stod(*it),tmp);
+                                (*w).vec.push_back(num);
+                            }
+                            v.push_back(w);
+                        }
                         if (fabs(std::stod(*it) - 1) < eps)
                         {
-                                Complex_vec_0 *w = new Complex_vec_0;
+                            Complex_vec_1 *w = new Complex_vec_1;
+                            ++it;
+                            for (; it_min1 != std::istream_iterator<std::string>(); ++it)
+                            {
+                                double tmp = std::stod(*it);
+                                it_min1 = it;
                                 ++it;
-                                //cout << "\n|" << *it << "|\n"; ++it;
-                                for (; it != std::istream_iterator<std::string>(); ++it)
-                                {
-                                    double tmp = std::stod(*it);
-                                    ++it;
-                                    Complex_num num(std::stod(*it),tmp);
-                                    (*w).vec.push_back(num);
-                                }
-                                v.push_back(w);
-                        }
-                        if (fabs(stod(*it) - 2) < eps)
-                        {
-                                Complex_vec_1 *w = new Complex_vec_1;
-                                ++it;
-                                //cout << "\n|" << *it << "|\n"; ++it;
-                                for (; it != std::istream_iterator<std::string>(); ++it)
-                                {
-                                    double tmp = std::stod(*it);
-                                    ++it;
-                                    if(it == std::istream_iterator<std::string>())
-                                    {
-                                        break;
-                                    }
-                                    Complex_num num(std::stod(*it),tmp);
-                                    (*w).vec.push_back(num);
-                                }
-                                v.push_back(w);
+                                Complex_num num(std::stod(*it),tmp);
+                                (*w).vec.push_back(num);
+                            }
+                            v.push_back(w);
                         }
                 }
         }
