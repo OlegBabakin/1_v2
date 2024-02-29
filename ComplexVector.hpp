@@ -37,13 +37,17 @@ class Complex_vec_0 : public Complex_vec
     Complex_vec_0(const Complex_vec &other); // Copy constructor
 
     int output(/*const char *file_name*/);
-    friend Complex_vec_0 operator+(Complex_vec &cvec1, Complex_vec &cvec2);
+    friend Complex_vec_0 operator+(const Complex_vec &cvec1, const Complex_vec &cvec2);
+    friend Complex_vec_0 operator-(const Complex_vec &cvec1, const Complex_vec &cvec2);
+    
     Complex_vec_0 &operator=(const Complex_vec &other);
 
     ~Complex_vec_0();
      
 };
+
 Complex_vec_0 operator+(const Complex_vec &cvec1, const Complex_vec &cvec2);
+Complex_vec_0 operator-(const Complex_vec &cvec1, const Complex_vec &cvec2);
 
 class Complex_vec_1 : public Complex_vec
 {
@@ -53,7 +57,6 @@ class Complex_vec_1 : public Complex_vec
 
     int output(/*const char *file_name*/);
     Complex_vec_1 &operator=(const Complex_vec &other);
-    //friend Complex_vec_1 operator+(const Complex_vec &cvec1, const Complex_vec &cvec2);
     
     ~Complex_vec_1();
 };

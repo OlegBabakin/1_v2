@@ -152,13 +152,26 @@ Complex_vec_1::~Complex_vec_1()
 
 Complex_vec_0 operator+(const Complex_vec &cvec1, const Complex_vec &cvec2)
 {
-    std::cout << "-----+-----\n";
+    std::cout << "-----'+'-----\n";
     size_t len = cvec1.vec.size();
     std::cout << len << "\n";
     Complex_vec_0 cvec;
     for(size_t i = 0; i < len; ++i)
     {
         cvec.vec.push_back(cvec1[i] + cvec2[i]);
+    }
+    return cvec;
+}
+
+Complex_vec_0 operator-(const Complex_vec &cvec1, const Complex_vec &cvec2)
+{
+    std::cout << "-----'-'-----\n";
+    size_t len = cvec1.vec.size();
+    std::cout << len << "\n";
+    Complex_vec_0 cvec;
+    for(size_t i = 0; i < len; ++i)
+    {
+        cvec.vec.push_back(cvec1[i] - cvec2[i]);
     }
     return cvec;
 }

@@ -22,7 +22,7 @@ int main(void)
     std::cout << (*v[0]).vec[1] << "\n";
     std::cout << (*v[0]).vec[2] << "\n";
     std::cout << (*v[0]).filename_ << "\n";
-    (*v[1]) = (*v[1]) + (*v[0]);
+    (*v[1]) = (*v[1]) - (*v[0]);
     std::cout << "\n";
     std::cout << (*v[1]).vec[0] << "\n";
     std::cout << (*v[1]).vec[1] << "\n";
