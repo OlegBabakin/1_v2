@@ -7,7 +7,7 @@ class Complex_vec
 {
     private:
     public:
-
+    std::string filename_; // name for output file 
     bool type; // type for subclass
     std::vector<Complex_num> vec; // vector, which contains complex coordinates of vector
     size_t len;

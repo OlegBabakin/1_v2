@@ -21,6 +21,7 @@ int main(void)
     std::cout << (*v[0]).vec[0] << "\n";
     std::cout << (*v[0]).vec[1] << "\n";
     std::cout << (*v[0]).vec[2] << "\n";
+    std::cout << (*v[0]).filename_ << "\n";
     for(size_t i = 0; i < v.size(); ++i)
     {
         delete v[i];

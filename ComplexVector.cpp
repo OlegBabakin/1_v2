@@ -34,7 +34,10 @@ int Complex_vec::Input(const char *name, std::vector<Complex_vec *> &v)
                 {
                         if (fabs(std::stod(*it) - 0) < eps)
                         {
+                            ++it;
                             Complex_vec_0 *w = new Complex_vec_0;
+                            w->filename_.append(*it);
+                            w->filename_.append(".txt");
                             ++it;
                             for (; it_min1 != std::istream_iterator<std::string>(); ++it)
                             {
@@ -48,7 +51,10 @@ int Complex_vec::Input(const char *name, std::vector<Complex_vec *> &v)
                         }
                         if (fabs(std::stod(*it) - 1) < eps)
                         {
+                            ++it;
                             Complex_vec_1 *w = new Complex_vec_1;
+                            w->filename_.append(*it);
+                            w->filename_.append(".txt");
                             ++it;
                             for (; it_min1 != std::istream_iterator<std::string>(); ++it)
                             {
