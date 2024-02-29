@@ -17,11 +17,16 @@ int main(void)
 //    v.vec.push_back(num2);
 //    v = v + v;
 
-//    // // v.output("pidor0");
+//    // // v.output("");
     std::cout << (*v[0]).vec[0] << "\n";
     std::cout << (*v[0]).vec[1] << "\n";
     std::cout << (*v[0]).vec[2] << "\n";
     std::cout << (*v[0]).filename_ << "\n";
+    (*v[1]) = (*v[1]) + (*v[0]);
+    std::cout << "\n";
+    std::cout << (*v[1]).vec[0] << "\n";
+    std::cout << (*v[1]).vec[1] << "\n";
+    std::cout << (*v[1]).vec[2] << "\n";
     for(size_t i = 0; i < v.size(); ++i)
     {
         delete v[i];

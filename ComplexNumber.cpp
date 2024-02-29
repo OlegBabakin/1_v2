@@ -50,6 +50,12 @@ Complex_num Complex_num::operator+(const Complex_num &cnum)
         return Complex_num(this->Re_ + cnum.Re_, this->Im_ + cnum.Im_);
 }
 
+// const addition operator for complex number
+Complex_num Complex_num::operator+(const Complex_num &cnum) const
+{
+        return Complex_num(this->Re_ + cnum.Re_, this->Im_ + cnum.Im_);
+}
+
 // subtraction operator for complex number
 Complex_num Complex_num::operator-(const Complex_num &cnum)
 {

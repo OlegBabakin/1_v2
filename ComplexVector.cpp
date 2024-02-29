@@ -5,7 +5,7 @@ Complex_vec::Complex_vec()
     this->len = 0;
 }
 
-Complex_vec::Complex_vec(const std::vector<Complex_num> &other)
+Complex_vec::Complex_vec(const Complex_vec &other)
 {
     this->len = other.size();
     for(unsigned int i = 0; i < other.size(); ++i)
@@ -15,6 +15,11 @@ Complex_vec::Complex_vec(const std::vector<Complex_num> &other)
 }
 
 Complex_num &Complex_vec::operator[](size_t i)
+{
+    return vec[i];
+}
+
+const Complex_num &Complex_vec::operator[](size_t i) const 
 {
     return vec[i];
 }
@@ -76,10 +81,21 @@ Complex_vec::~Complex_vec()
 {
 }
 
+size_t Complex_vec::size()
+{
+    return this->len;
+}
+
+size_t Complex_vec::size() const
+{
+    return this->len;
+}
+
+
 Complex_vec_0::Complex_vec_0() : Complex_vec()
 {}
 
-Complex_vec_0::Complex_vec_0(const std::vector<Complex_num> &other) : Complex_vec(other)
+Complex_vec_0::Complex_vec_0(const Complex_vec &other) : Complex_vec(other)
 {}
 
 int Complex_vec_0::output(/*const char *file_name*/)
@@ -108,6 +124,9 @@ Complex_vec_0::~Complex_vec_0()
 Complex_vec_1::Complex_vec_1() : Complex_vec()
 {}
 
+Complex_vec_1::Complex_vec_1(const Complex_vec &other) : Complex_vec(other)
+{}
+
 int Complex_vec_1::output(/*const char *file_name*/)
 {
     std::cout << "==1==\n";
@@ -131,15 +150,15 @@ Complex_vec_1::~Complex_vec_1()
 {
 }
 
-Complex_vec_0 operator+(Complex_vec &cvec1, Complex_vec &cvec2)
+Complex_vec_0 operator+(const Complex_vec &cvec1, const Complex_vec &cvec2)
 {
     std::cout << "-----+-----\n";
     size_t len = cvec1.vec.size();
     std::cout << len << "\n";
-    std::vector<Complex_num> cvec(len);
+    Complex_vec_0 cvec;
     for(size_t i = 0; i < len; ++i)
     {
-            cvec[i] = cvec1.vec[i] + cvec2.vec[i];
+        cvec.vec.push_back(cvec1[i] + cvec2[i]);
     }
-    return Complex_vec_0(cvec);
+    return cvec;
 }
