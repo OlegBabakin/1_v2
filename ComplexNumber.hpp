@@ -56,6 +56,7 @@ public:
     Complex_num operator-(const Complex_num &cnum);
     Complex_num operator-(const Complex_num &cnum) const;
     Complex_num operator*(const Complex_num &cnum);
+    Complex_num operator*(const Complex_num &cnum) const; 
     Complex_num& operator=(const Complex_num &cnum);
 
     // output function for complex number

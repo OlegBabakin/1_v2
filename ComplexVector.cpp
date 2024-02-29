@@ -175,3 +175,17 @@ Complex_vec_0 operator-(const Complex_vec &cvec1, const Complex_vec &cvec2)
     }
     return cvec;
 }
+
+Complex_num operator*(const Complex_vec &cvec1, const Complex_vec &cvec2)
+{
+    std::cout << "-----'*'-----\n";
+    size_t len = cvec1.vec.size();
+    std::cout << len << "\n";
+    Complex_num cnum;
+    for(size_t i = 0; i < len; ++i)
+    {
+        cnum = cnum + (cvec1[i] * cvec2[i]);
+        std::cout << (cvec1[i] * cvec2[i]) << "\n";
+    }
+    return cnum;
+}

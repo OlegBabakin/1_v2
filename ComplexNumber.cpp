@@ -62,7 +62,7 @@ Complex_num Complex_num::operator-(const Complex_num &cnum)
         return Complex_num(this->Re_ - cnum.Re_, this->Im_ - cnum.Im_);
 }
 
-// const addition operator for complex number
+// const subtraction operator for complex number
 Complex_num Complex_num::operator-(const Complex_num &cnum) const
 {
         return Complex_num(this->Re_ - cnum.Re_, this->Im_ - cnum.Im_);
@@ -70,6 +70,14 @@ Complex_num Complex_num::operator-(const Complex_num &cnum) const
 
 // multiplication operator for complex number
 Complex_num Complex_num::operator*(const Complex_num &cnum)
+{
+        Complex_num tmp;
+        tmp = Complex_num(this->Re_*cnum.Re_ + this->Im_*cnum.Im_, this->Re_*cnum.Im_ + this->Im_*cnum.Re_);
+        return tmp;
+}
+
+// const multiplication operator for complex number
+Complex_num Complex_num::operator*(const Complex_num &cnum) const
 {
         Complex_num tmp;
         tmp = Complex_num(this->Re_*cnum.Re_ + this->Im_*cnum.Im_, this->Re_*cnum.Im_ + this->Im_*cnum.Re_);
