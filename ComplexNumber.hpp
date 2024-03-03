@@ -25,17 +25,19 @@
 #include <iterator>
 #include <cstring>
 #include <stdbool.h>
+#include <float.h>
 
 class Complex_vec;
 
 // Complex number class
 class Complex_num
 {
+
 friend class Complex_vec;
 private:
-public:
     double Re_;
     double Im_;
+public:
     bool isvalid;
     
     // default constructor for complex number
@@ -62,6 +64,12 @@ public:
 
     // output function for complex number
     friend std::ostream& operator << (std::ostream &out, const Complex_num& cnum);
+
+    // interface
+    const double& get_re();
+    const double& get_im();
+    const double& get_re() const;
+    const double& get_im() const;
 };
 
 #endif

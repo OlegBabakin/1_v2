@@ -43,7 +43,7 @@ int Complex_vec::Input(const char *name, std::vector<Complex_vec *> &v)
             it = ss;
             if (it != std::istream_iterator<std::string>())
             {
-                    if (fabs(std::stod(*it) - 0) < eps)
+                    if (fabs(std::stod(*it) - 0) < DBL_EPSILON)
                     {
                         ++it;
                         Complex_num tmp;
@@ -67,7 +67,7 @@ int Complex_vec::Input(const char *name, std::vector<Complex_vec *> &v)
                         (*w).len = (*w).vec.size();
                         v.push_back(w);
                     }
-                    if (fabs(std::stod(*it) - 1) < eps)
+                    if (fabs(std::stod(*it) - 1) < DBL_EPSILON)
                     {
                         ++it;
                         Complex_num tmp;

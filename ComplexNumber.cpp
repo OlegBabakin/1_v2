@@ -138,3 +138,23 @@ std::ostream& operator << (std::ostream &out, const Complex_num& cnum)
     out << cnum.Re_ << " + " << cnum.Im_ << "i";
     return out;
 }
+
+const double& Complex_num::get_re()
+{
+        return this->Re_;
+}
+
+const double& Complex_num::get_im()
+{
+        return this->Im_;
+}
+
+const double& Complex_num::get_re() const
+{
+        return this->Re_;
+}
+
+const double& Complex_num::get_im() const
+{
+        return this->Im_;
+}

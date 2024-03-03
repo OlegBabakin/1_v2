@@ -7,8 +7,8 @@ int sum_test(const Complex_vec &vect1, const Complex_vec &vect2, const Complex_v
 	for(size_t i = 0; i < len; ++i)
 	{
 		 
-		 if((fabs((vect1.vec[i].Re_ + vect2.vec[i].Re_) - sum.vec[i].Re_) >= DBL_EPSILON) 
-         || (fabs((vect1.vec[i].Im_ + vect2.vec[i].Im_) - sum.vec[i].Im_) >= DBL_EPSILON))
+		 if((fabs((vect1[i].get_re() + vect2[i].get_re()) - sum[i].get_re()) >= DBL_EPSILON) 
+         || (fabs((vect1[i].get_im() + vect2[i].get_im()) - sum[i].get_im()) >= DBL_EPSILON))
 		 {
 		 	return -1;
 		 }
@@ -21,8 +21,8 @@ int difference_test(const Complex_vec &vect1, const Complex_vec &vect2, const Co
 	size_t len = diff.len;
 	for(size_t i = 0; i < len; ++i)
 	{
-		 if((fabs((vect1.vec[i].Re_ - vect2.vec[i].Re_) - diff.vec[i].Re_) >= DBL_EPSILON) 
-		 	|| (fabs((vect1.vec[i].Im_ - vect2.vec[i].Im_) - diff.vec[i].Im_) >= DBL_EPSILON))
+		 if((fabs((vect1[i].get_re() - vect2[i].get_re()) - diff[i].get_re()) >= DBL_EPSILON) 
+		 	|| (fabs((vect1[i].get_im() - vect2[i].get_im()) - diff[i].get_im()) >= DBL_EPSILON))
 		 {
 		 	return -1;
 		 }
@@ -39,7 +39,7 @@ int scalarprod_test(Complex_vec &vect1, const Complex_vec &vect2, const Complex_
         test_prod = test_prod + (vect1[i] * vect2[i]);
     }
 
-	if(((test_prod.Re_ - prod.Re_) >= DBL_EPSILON) || ((test_prod.Im_ - prod.Im_) >= DBL_EPSILON))
+	if(((test_prod.get_re() - prod.get_re()) >= DBL_EPSILON) || ((test_prod.get_im() - prod.get_im()) >= DBL_EPSILON))
 	{
 		return -1;
 	}

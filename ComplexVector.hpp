@@ -6,12 +6,12 @@
 class Complex_vec
 {
     private:
-    public:
-
     std::string filename_; // name for output file 
     bool type; // type for subclass
     std::vector<Complex_num> vec; // vector, which contains complex coordinates of vector
     size_t len; // size of vector
+
+    public:
 
     // Constructors
     Complex_vec(); // Default constructor
@@ -25,6 +25,7 @@ class Complex_vec
     Complex_num &operator[](size_t i);
     const Complex_num &operator[](size_t i) const;
 
+
     // Destructor
     virtual ~Complex_vec();
 
@@ -34,6 +35,7 @@ class Complex_vec
 
 };
 
+// First dirived class
 class Complex_vec_0 : public Complex_vec
 {
     public:
@@ -55,6 +57,7 @@ Complex_vec_0 operator+(const Complex_vec &cvec1, const Complex_vec &cvec2);
 Complex_vec_0 operator-(const Complex_vec &cvec1, const Complex_vec &cvec2);
 Complex_num operator*(const Complex_vec &cvec1, const Complex_vec &cvec2);
 
+// Second dirived class
 class Complex_vec_1 : public Complex_vec
 {
     public:

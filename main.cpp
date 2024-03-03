@@ -8,11 +8,11 @@ int main(void)
     std::vector<Complex_vec *> v;
     Complex_vec::Input("data.txt", v);
     autotest();
-    for(int i = 0; i < (*v).size())
+    for(size_t i = 0; i < v.size(); ++i)
     {
         (*v[i]).output();
     }
-    
+
     for(size_t i = 0; i < v.size(); ++i)
     {
         delete v[i];
