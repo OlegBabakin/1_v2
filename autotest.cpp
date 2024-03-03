@@ -1,6 +1,5 @@
 #include "ComplexVector.hpp"
 #include "autotest.hpp"
-#include <float.h>
 
 int sum_test(const Complex_vec &vect1, const Complex_vec &vect2, const Complex_vec &sum)
 {

@@ -8,6 +8,7 @@
 
 #ifndef __H_COMPLEX  // recompilation protection
 #define __H_COMPLEX
+
 #define N 100000 // Number for random number generator
 #define M 100000
 
@@ -24,8 +25,6 @@
 #include <iterator>
 #include <cstring>
 #include <stdbool.h>
-
-#define eps 1e-20
 
 class Complex_vec;
 

@@ -1,40 +1,67 @@
 #include "ComplexVector.hpp"
+#include "autotest.hpp"
+
+int autotest();
 
 int main(void)
 {
     std::vector<Complex_vec *> v;
     Complex_vec::Input("data.txt", v);
-//    Complex_num num0(1, 5);
-//    Complex_num num1(6, 3);
-//    Complex_num num2(2, 4);
-//    // Complex_num num2;
-//    // num2= num+num;
-//    // std::cout << "num1 = " << num << "\n";
-
-//    Complex_vec_0 v;
-//    v.vec.push_back(num0);
-//    v.vec.push_back(num1);
-//    v.vec.push_back(num2);
-//    v = v + v;
-
-//    // // v.output("");
-    // std::cout << (*v[0]).vec[0] << "\n";
-    // std::cout << (*v[0]).vec[1] << "\n";
-    // std::cout << (*v[0]).vec[2] << "\n";
-    // std::cout << (*v[0]).filename_ << "\n";
-    // Complex_num cnum = (*v[1]) * (*v[0]);
-    // std::cout << (*v[1]).len <<"\n";
-    // std::cout << (*v[0]).len <<"\n";
-    // std::cout << cnum << "\n";
-    // std::cout << "\n";
-    // std::cout << (*v[1]).vec[0] << "\n";
-    // std::cout << (*v[1]).vec[1] << "\n";
-    // std::cout << (*v[1]).vec[2] << "\n";
-    (*v[0]).output();
-    (*v[1]).output();
+    autotest();
+    for(int i = 0; i < (*v).size())
+    {
+        (*v[i]).output();
+    }
+    
     for(size_t i = 0; i < v.size(); ++i)
     {
         delete v[i];
     }
     return 0;
+}
+
+
+int autotest()
+{
+    for(int i = 0; i < 100; ++i)
+    {
+        Complex_vec_0 cvec1;
+        Complex_vec_0 cvec2;
+        for(int i = 0; i < 10; ++i)
+        {
+            cvec1.vec.push_back(Complex_num());
+            cvec2.vec.push_back(Complex_num());
+        }
+        cvec1.len = cvec2.len = cvec1.vec.size();
+        if(sum_test(cvec1, cvec2 , cvec1 + cvec2))
+        {
+            std::cout << "Autotest \"+\" success\n";
+        }
+        else
+        {
+            std::cout << "Autotest \"+\" fail\n";
+            return -1;
+        }
+
+        if(difference_test(cvec1, cvec2 , cvec1 - cvec2))
+        {
+            std::cout << "Autotest \"-\" success\n";
+        }
+        else
+        {
+            std::cout << "Autotest \"-\" fail\n";
+            return -1;
+        }
+
+        if(scalarprod_test(cvec1, cvec2 , cvec1 * cvec2))
+        {
+            std::cout << "Autotest \"*\" success\n";
+        }
+        else
+        {
+            std::cout << "Autotest \"*\" fail\n";
+            return -1;
+        }
+    }
+    return 1;
 }
