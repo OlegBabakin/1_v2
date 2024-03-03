@@ -38,7 +38,6 @@ int scalarprod_test(Complex_vec &vect1, const Complex_vec &vect2, const Complex_
     {
         test_prod = test_prod + (vect1[i] * vect2[i]);
     }
-
 	if(((test_prod.get_re() - prod.get_re()) >= DBL_EPSILON) || ((test_prod.get_im() - prod.get_im()) >= DBL_EPSILON))
 	{
 		return -1;
