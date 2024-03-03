@@ -23,7 +23,8 @@ int main(void)
     std::cout << (*v[0]).vec[2] << "\n";
     std::cout << (*v[0]).filename_ << "\n";
     Complex_num cnum = (*v[1]) * (*v[0]);
-
+    std::cout << (*v[1]).len <<"\n";
+    std::cout << (*v[0]).len <<"\n";
     std::cout << cnum << "\n";
     std::cout << "\n";
     std::cout << (*v[1]).vec[0] << "\n";

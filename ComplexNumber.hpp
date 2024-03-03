@@ -1,8 +1,8 @@
 /*
 1. Определить классCCompexVectorдля работы с векторами ком-плексных чисел.
 Длина вектора задается в конструкторе класса.
-В классе должны быть определены необходимые конструкторы, деструктор,операторы присваивания, сложения, вычитания, скалярногоумножения.
-Написать функцию и конструктор сохранения переменной данноготипа в файл и загрузки из файла.
+В классе должны быть определены необходимые конструкторы, деструктор,операторы присваивания, сложения, вычитания, скалярного умножения.
+Написать функцию и конструктор сохранения переменной данного типа в файл и загрузки из файла.
 В отдельном файле должен быть написан тест на данный класс.
 */
 
@@ -23,6 +23,7 @@
 #include <sstream>
 #include <iterator>
 #include <cstring>
+#include <stdbool.h>
 
 #define eps 1e-20
 
@@ -34,20 +35,21 @@ class Complex_num
 friend class Complex_vec;
 private:
 public:
-        double Re_;
-        double Im_;
-
-        // default constructor for complex number
-        Complex_num();
+    double Re_;
+    double Im_;
+    bool isvalid;
+    
+    // default constructor for complex number
+    Complex_num();
 
     // two number constructor for complex number
-        Complex_num(double Re, double Im);
+    Complex_num(double Re, double Im);
 
     // desructor for complex number
-        ~Complex_num();
+    ~Complex_num();
     // move constructor
-        Complex_num(Complex_num&& cnum);
-        Complex_num(const Complex_num& cnum);
+    Complex_num(Complex_num&& cnum);
+    Complex_num(const Complex_num& cnum);
 
     // arithmetic operators for complex number
     Complex_num operator+(const Complex_num &cnum);

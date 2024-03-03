@@ -11,8 +11,9 @@
 // two number constructor for complex number
 Complex_num::Complex_num(double Re, double Im)
 {
-        Re_ = Re;
-        Im_ = Im;
+        this->Re_ = Re;
+        this->Im_ = Im;
+        this->isvalid = true;
 }
 
 // default constructor as a two random numbers constructor for complex number
@@ -20,28 +21,49 @@ Complex_num::Complex_num()
 {
         this->Re_ = (double)(rand()%N)/1000;
         this->Im_ = (double)(rand()%N)/1000;
+        this->isvalid = true;
 }
 
 // copy constructor
 Complex_num::Complex_num(const Complex_num& cnum)
 {
-    std::cout << "Copy constructor\n";
-        this->Re_ = cnum.Re_;
-        this->Im_ = cnum.Im_;
+//     std::cout << "Copy constructor\n";
+        if(cnum.isvalid)
+        {
+                this->Re_ = cnum.Re_;
+                this->Im_ = cnum.Im_;
+                this->isvalid = true;
+        }
+        else
+        {
+                this->Re_ = 0.;
+                this->Im_ = 0.;
+                this->isvalid = true;
+        }
 }
 
 // move constructor
 Complex_num::Complex_num(Complex_num&& cnum)
 {
-        std::cout << "Move constructor\n";
-        this->Re_ = cnum.Re_;
-        this->Im_ = cnum.Im_;
+        // std::cout << "Move constructor\n";
+        if(cnum.isvalid)
+        {
+                this->Re_ = cnum.Re_;
+                this->Im_ = cnum.Im_;
+                this->isvalid = true;
+        }
+        else
+        {
+                this->Re_ = 0.;
+                this->Im_ = 0.;
+                this->isvalid = true;
+        }
 }
 
 // destructor for complex number
 Complex_num::~Complex_num()
 {
-        std::cout << "Destructor for complex number\n";
+        // std::cout << "Destructor for complex number\n";
 }
 
 // addition operator for complex number
@@ -87,18 +109,26 @@ Complex_num Complex_num::operator*(const Complex_num &cnum) const
 // assignment operator for complex number
 Complex_num& Complex_num::operator=(Complex_num &&cnum)
 {
-    std::cout << "Move operator\n";
-    this->Re_ = cnum.Re_;
-    this->Im_ = cnum.Im_;
+//     std::cout << "Move operator\n";
+    if((cnum.isvalid) && (this != &cnum))
+        {
+                this->Re_ = cnum.Re_;
+                this->Im_ = cnum.Im_;
+                this->isvalid = true;
+        }
     return *this;
 }
 
 // assignment operator for complex number
 Complex_num& Complex_num::operator=(const Complex_num &cnum)
 {
-    std::cout << "Copy operator\n";
-    this->Re_ = cnum.Re_;
-    this->Im_ = cnum.Im_;
+//     std::cout << "Copy operator\n";
+    if((cnum.isvalid) && (this != &cnum))
+        {
+                this->Re_ = cnum.Re_;
+                this->Im_ = cnum.Im_;
+                this->isvalid = true;
+        }
     return *this;
 }
 

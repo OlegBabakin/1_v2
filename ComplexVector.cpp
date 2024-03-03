@@ -7,10 +7,16 @@ Complex_vec::Complex_vec()
 
 Complex_vec::Complex_vec(const Complex_vec &other)
 {
-    this->len = other.size();
-    for(unsigned int i = 0; i < other.size(); ++i)
+    if(other.len < 0)
     {
-        this->vec.push_back(other[i]);
+        if (this != &other)
+        {
+            this->vec.clear();
+            for(size_t i=0; i < other.len; i++)
+            {
+                vec.push_back(other.vec[i]);
+            }
+        }
     }
 }
 
@@ -51,6 +57,7 @@ int Complex_vec::Input(const char *name, std::vector<Complex_vec *> &v)
                                 ++it;
                                 Complex_num num(std::stod(*it),tmp);
                                 (*w).vec.push_back(num);
+                                (*w).len++;
                             }
                             v.push_back(w);
                         }
@@ -68,6 +75,7 @@ int Complex_vec::Input(const char *name, std::vector<Complex_vec *> &v)
                                 ++it;
                                 Complex_num num(std::stod(*it),tmp);
                                 (*w).vec.push_back(num);
+                                (*w).len++;
                             }
                             v.push_back(w);
                         }
@@ -106,12 +114,15 @@ int Complex_vec_0::output(/*const char *file_name*/)
 
 Complex_vec_0 &Complex_vec_0::operator=(const Complex_vec &other)
 {
-    if (this != &other)
+    if(other.len < 0)
     {
-        this->vec.clear();
-        for(size_t i=0; i < other.len; i++)
+        if (this != &other)
         {
-            vec.push_back(other.vec[i]);
+            this->vec.clear();
+            for(size_t i=0; i < other.len; i++)
+            {
+                vec.push_back(other.vec[i]);
+            }
         }
     }
     return *this;
@@ -152,40 +163,71 @@ Complex_vec_1::~Complex_vec_1()
 
 Complex_vec_0 operator+(const Complex_vec &cvec1, const Complex_vec &cvec2)
 {
-    std::cout << "-----'+'-----\n";
-    size_t len = cvec1.vec.size();
-    std::cout << len << "\n";
+    // std::cout << "-----'+'-----\n";
     Complex_vec_0 cvec;
-    for(size_t i = 0; i < len; ++i)
+    if((cvec1.len != cvec2.len) || (cvec1.len <= 0))
     {
-        cvec.vec.push_back(cvec1[i] + cvec2[i]);
+        std::cout << "Wrong length\n";
+        cvec.len = -1;
+    }
+    else
+    {
+        size_t len = cvec1.vec.size();
+        cvec.len = len;
+        cvec.filename_ = cvec1.filename_;
+        cvec.type = cvec1.type;
+        // std::cout << len << "\n";
+        for(size_t i = 0; i < len; ++i)
+        {
+            cvec.vec.push_back(cvec1[i] + cvec2[i]);
+        }
     }
     return cvec;
 }
 
 Complex_vec_0 operator-(const Complex_vec &cvec1, const Complex_vec &cvec2)
 {
-    std::cout << "-----'-'-----\n";
-    size_t len = cvec1.vec.size();
-    std::cout << len << "\n";
+    // std::cout << "-----'-'-----\n";
     Complex_vec_0 cvec;
-    for(size_t i = 0; i < len; ++i)
+    if((cvec1.len != cvec2.len) || (cvec1.len <= 0))
     {
-        cvec.vec.push_back(cvec1[i] - cvec2[i]);
+        std::cout << "Wrong length\n";
+        cvec.len = -1;
+    }
+    else
+    {
+        size_t len = cvec1.vec.size();
+        cvec.len = len;
+        cvec.filename_ = cvec1.filename_;
+        cvec.type = cvec1.type;
+        // std::cout << len << "\n";
+        for(size_t i = 0; i < len; ++i)
+        {
+            cvec.vec.push_back(cvec1[i] - cvec2[i]);
+        }
     }
     return cvec;
 }
 
 Complex_num operator*(const Complex_vec &cvec1, const Complex_vec &cvec2)
 {
-    std::cout << "-----'*'-----\n";
-    size_t len = cvec1.vec.size();
-    std::cout << len << "\n";
+    // std::cout << "-----'*'-----\n";
     Complex_num cnum;
-    for(size_t i = 0; i < len; ++i)
+    if((cvec1.len != cvec2.len) || (cvec1.len <= 0))
     {
-        cnum = cnum + (cvec1[i] * cvec2[i]);
-        std::cout << (cvec1[i] * cvec2[i]) << "\n";
+        std::cout << "Wrong length\n";
+        cnum.isvalid = false;
+    }
+    else
+    {
+        cnum.isvalid = true;
+        size_t len = cvec1.vec.size();
+        std::cout << len << "\n";
+        for(size_t i = 0; i < len; ++i)
+        {
+            cnum = cnum + (cvec1[i] * cvec2[i]);
+            std::cout << (cvec1[i] * cvec2[i]) << "\n";
+        }
     }
     return cnum;
 }
