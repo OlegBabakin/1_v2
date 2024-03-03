@@ -18,18 +18,20 @@ int main(void)
 //    v = v + v;
 
 //    // // v.output("");
-    std::cout << (*v[0]).vec[0] << "\n";
-    std::cout << (*v[0]).vec[1] << "\n";
-    std::cout << (*v[0]).vec[2] << "\n";
-    std::cout << (*v[0]).filename_ << "\n";
-    Complex_num cnum = (*v[1]) * (*v[0]);
-    std::cout << (*v[1]).len <<"\n";
-    std::cout << (*v[0]).len <<"\n";
-    std::cout << cnum << "\n";
-    std::cout << "\n";
-    std::cout << (*v[1]).vec[0] << "\n";
-    std::cout << (*v[1]).vec[1] << "\n";
-    std::cout << (*v[1]).vec[2] << "\n";
+    // std::cout << (*v[0]).vec[0] << "\n";
+    // std::cout << (*v[0]).vec[1] << "\n";
+    // std::cout << (*v[0]).vec[2] << "\n";
+    // std::cout << (*v[0]).filename_ << "\n";
+    // Complex_num cnum = (*v[1]) * (*v[0]);
+    // std::cout << (*v[1]).len <<"\n";
+    // std::cout << (*v[0]).len <<"\n";
+    // std::cout << cnum << "\n";
+    // std::cout << "\n";
+    // std::cout << (*v[1]).vec[0] << "\n";
+    // std::cout << (*v[1]).vec[1] << "\n";
+    // std::cout << (*v[1]).vec[2] << "\n";
+    (*v[0]).output();
+    (*v[1]).output();
     for(size_t i = 0; i < v.size(); ++i)
     {
         delete v[i];

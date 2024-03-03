@@ -34,52 +34,64 @@ int Complex_vec::Input(const char *name, std::vector<Complex_vec *> &v)
 {
         std::ifstream f(name);
         std::string str;
+        int i = 0;
         while (getline(f, str))
         {
-                std::stringstream ss(str); 
-                std::istream_iterator<std::string> it;
-                std::istream_iterator<std::string> it_min1;
-                it = ss;
-                it_min1 = it;
-                if (it != std::istream_iterator<std::string>())
-                {
-                        if (fabs(std::stod(*it) - 0) < eps)
+            i = 0;
+            std::stringstream ss(str); 
+            std::istream_iterator<std::string> it;
+            it = ss;
+            if (it != std::istream_iterator<std::string>())
+            {
+                    if (fabs(std::stod(*it) - 0) < eps)
+                    {
+                        ++it;
+                        Complex_num tmp;
+                        Complex_vec_0 *w = new Complex_vec_0;
+                        w->filename_.append(*it);
+                        w->filename_.append(".txt");
+                        ++it;
+                        for (; it != std::istream_iterator<std::string>(); ++it)
                         {
-                            ++it;
-                            Complex_vec_0 *w = new Complex_vec_0;
-                            w->filename_.append(*it);
-                            w->filename_.append(".txt");
-                            ++it;
-                            for (; it_min1 != std::istream_iterator<std::string>(); ++it)
+                            if(i % 2 == 0)
                             {
-                                double tmp = std::stod(*it);
-                                it_min1 = it;
-                                ++it;
-                                Complex_num num(std::stod(*it),tmp);
-                                (*w).vec.push_back(num);
-                                (*w).len++;
+                                tmp.Re_ = std::stod(*it);
                             }
-                            v.push_back(w);
+                            else
+                            {
+                                tmp.Im_ = std::stod(*it);
+                                (*w).vec.push_back(tmp);
+                            }
+                            ++i;
                         }
-                        if (fabs(std::stod(*it) - 1) < eps)
+                        (*w).len = (*w).vec.size();
+                        v.push_back(w);
+                    }
+                    if (fabs(std::stod(*it) - 1) < eps)
+                    {
+                        ++it;
+                        Complex_num tmp;
+                        Complex_vec_1 *w = new Complex_vec_1;
+                        w->filename_.append(*it);
+                        w->filename_.append(".txt");
+                        ++it;
+                        for (; it != std::istream_iterator<std::string>(); ++it)
                         {
-                            ++it;
-                            Complex_vec_1 *w = new Complex_vec_1;
-                            w->filename_.append(*it);
-                            w->filename_.append(".txt");
-                            ++it;
-                            for (; it_min1 != std::istream_iterator<std::string>(); ++it)
+                            if(i % 2 == 0)
                             {
-                                double tmp = std::stod(*it);
-                                it_min1 = it;
-                                ++it;
-                                Complex_num num(std::stod(*it),tmp);
-                                (*w).vec.push_back(num);
-                                (*w).len++;
+                                tmp.Re_ = std::stod(*it);
                             }
-                            v.push_back(w);
+                            else
+                            {
+                                tmp.Im_ = std::stod(*it);
+                                (*w).vec.push_back(tmp);
+                            }
+                            ++i;
                         }
-                }
+                        (*w).len = (*w).vec.size();
+                        v.push_back(w);
+                    }
+            }
         }
         return 0;
 
@@ -106,12 +118,6 @@ Complex_vec_0::Complex_vec_0() : Complex_vec()
 Complex_vec_0::Complex_vec_0(const Complex_vec &other) : Complex_vec(other)
 {}
 
-int Complex_vec_0::output(/*const char *file_name*/)
-{
-    std::cout << "==0==\n";
-    return 1;
-}
-
 Complex_vec_0 &Complex_vec_0::operator=(const Complex_vec &other)
 {
     if(other.len < 0)
@@ -137,12 +143,6 @@ Complex_vec_1::Complex_vec_1() : Complex_vec()
 
 Complex_vec_1::Complex_vec_1(const Complex_vec &other) : Complex_vec(other)
 {}
-
-int Complex_vec_1::output(/*const char *file_name*/)
-{
-    std::cout << "==1==\n";
-    return 1;
-}
 
 Complex_vec_1 &Complex_vec_1::operator=(const Complex_vec &other)
 {
@@ -226,8 +226,36 @@ Complex_num operator*(const Complex_vec &cvec1, const Complex_vec &cvec2)
         for(size_t i = 0; i < len; ++i)
         {
             cnum = cnum + (cvec1[i] * cvec2[i]);
-            std::cout << (cvec1[i] * cvec2[i]) << "\n";
+            // std::cout << (cvec1[i] * cvec2[i]) << "\n";
         }
     }
     return cnum;
+}
+
+void Complex_vec_0::output()
+{
+    std::ofstream fout(this->filename_.c_str(), std::ios_base::app);
+
+    fout << "Cvector0: \n";
+
+    for (size_t i = 0; i < this->len; ++i)
+    {
+        fout << (*this)[i] << " ";
+    }
+
+    fout << "\n";
+}
+
+void Complex_vec_1::output()
+{
+    std::ofstream fout(this->filename_.c_str(), std::ios_base::app);
+
+    fout << "Cvector1:\n";
+
+    for (size_t i = 0; i < this->len; ++i)
+    {
+        fout << (*this)[i] << "\n";
+    }
+        
+    fout << "\n";
 }

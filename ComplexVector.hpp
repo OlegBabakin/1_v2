@@ -17,7 +17,7 @@ class Complex_vec
     Complex_vec(); // Default constructor
     Complex_vec(const Complex_vec &other); // Copy constructor
 
-    virtual int output(/*const char *file_name*/)=0;
+    virtual void output(/*const char *file_name*/)=0;
     static int Input(const char *name, std::vector <Complex_vec *> &v);
     size_t size();
     size_t size() const;
@@ -28,6 +28,10 @@ class Complex_vec
     // Destructor
     virtual ~Complex_vec();
 
+    friend int sum_test(const Complex_vec &vect1, const Complex_vec &vect2, const Complex_vec &sum);
+	friend int difference_test(const Complex_vec &vect1, const Complex_vec &vect2, const Complex_vec &diff);
+	friend int scalarprod_test(const Complex_vec &vect1, const Complex_vec &vect2, const Complex_num &prod);
+
 };
 
 class Complex_vec_0 : public Complex_vec
@@ -36,7 +40,7 @@ class Complex_vec_0 : public Complex_vec
     Complex_vec_0(); // Default constructor
     Complex_vec_0(const Complex_vec &other); // Copy constructor
 
-    int output(/*const char *file_name*/);
+    void output(/*const char *file_name*/);
     friend Complex_vec_0 operator+(const Complex_vec &cvec1, const Complex_vec &cvec2);
     friend Complex_vec_0 operator-(const Complex_vec &cvec1, const Complex_vec &cvec2);
     friend Complex_num operator*(const Complex_vec &cvec1, const Complex_vec &cvec2);
@@ -57,7 +61,7 @@ class Complex_vec_1 : public Complex_vec
     Complex_vec_1(); // Default constructor
     Complex_vec_1(const Complex_vec &other); // Copy constructor
 
-    int output(/*const char *file_name*/);
+    void output(/*const char *file_name*/);
     Complex_vec_1 &operator=(const Complex_vec &other);
     
     ~Complex_vec_1();
