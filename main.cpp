@@ -29,10 +29,9 @@ int autotest()
         Complex_vec_0 cvec2;
         for(int i = 0; i < 10; ++i)
         {
-            cvec1.vec.push_back(Complex_num());
-            cvec2.vec.push_back(Complex_num());
+            cvec1.push_back(Complex_num());
+            cvec2.push_back(Complex_num());
         }
-        cvec1.len = cvec2.len = cvec1.vec.size();
         if(sum_test(cvec1, cvec2 , cvec1 + cvec2))
         {
             std::cout << "Autotest \"+\" success\n";

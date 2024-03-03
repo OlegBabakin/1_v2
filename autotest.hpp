@@ -1,4 +1,4 @@
-#ifndef __H_AUTOTEST  // Защита от повторной компиляции
+#ifndef __H_AUTOTEST  // recompilation protection
 #define __H_AUTOTEST
 
 #include "ComplexVector.hpp"
